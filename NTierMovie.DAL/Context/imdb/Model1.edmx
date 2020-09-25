@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sampleImdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sampleImdb.dbo.Movies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="Rank" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Genre" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Director" />
+            <PropertyRef Name="Actors" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Runtime_Minutes" />
+            <PropertyRef Name="Rating" />
+            <PropertyRef Name="Votes" />
+          </Key>
+          <Property Name="Rank" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="Director" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Actors" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Runtime_Minutes" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="Votes" Type="int" Nullable="false" />
+          <Property Name="Revenue_Millions" Type="nvarchar" MaxLength="50" />
+          <Property Name="Metascore" Type="int" />
+        </EntityType>
+        <EntityContainer Name="sampleImdbModelStoreContainer">
+          <EntitySet Name="Movies" EntityType="Self.Movies" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Movies].[Rank] AS [Rank], 
+    [Movies].[Title] AS [Title], 
+    [Movies].[Genre] AS [Genre], 
+    [Movies].[Description] AS [Description], 
+    [Movies].[Director] AS [Director], 
+    [Movies].[Actors] AS [Actors], 
+    [Movies].[Year] AS [Year], 
+    [Movies].[Runtime_Minutes] AS [Runtime_Minutes], 
+    [Movies].[Rating] AS [Rating], 
+    [Movies].[Votes] AS [Votes], 
+    [Movies].[Revenue_Millions] AS [Revenue_Millions], 
+    [Movies].[Metascore] AS [Metascore]
+    FROM [dbo].[Movies] AS [Movies]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sampleImdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Movy">
+          <Key>
+            <PropertyRef Name="Rank" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Genre" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Director" />
+            <PropertyRef Name="Actors" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Runtime_Minutes" />
+            <PropertyRef Name="Rating" />
+            <PropertyRef Name="Votes" />
+          </Key>
+          <Property Name="Rank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Genre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Director" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Actors" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Runtime_Minutes" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="Votes" Type="Int32" Nullable="false" />
+          <Property Name="Revenue_Millions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Metascore" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="sampleImdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Movies" EntityType="Self.Movy" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sampleImdbModelStoreContainer" CdmEntityContainer="sampleImdbEntities">
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="sampleImdbModel.Movy">
+              <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actors" ColumnName="Actors" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Runtime_Minutes" ColumnName="Runtime_Minutes" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Votes" ColumnName="Votes" />
+                <ScalarProperty Name="Revenue_Millions" ColumnName="Revenue_Millions" />
+                <ScalarProperty Name="Metascore" ColumnName="Metascore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
